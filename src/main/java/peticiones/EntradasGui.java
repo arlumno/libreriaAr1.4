@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package libreriamenu;
+package peticiones;
 
 import java.io.File;
 import java.text.ParseException;
@@ -13,6 +13,8 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import textos.SalidasGui;
+import textos.Textos;
 
 /**
  * Conjunto de metodos para para trabajar en clase de DAM.
@@ -471,5 +473,8 @@ public class EntradasGui {
             }
         } while (!fin);
         return resultado;
+    }
+    public static void pedirAnuncio(String texto){
+        JOptionPane.showMessageDialog(null, texto);
     }
 }

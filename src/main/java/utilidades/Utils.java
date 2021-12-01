@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package libreriamenu;
+package utilidades;
+
+import textos.Salidas;
 
 /**
  * Conjunto de metodos (Utils varias) para para trabajar en clase de DAM.

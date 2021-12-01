@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package libreriamenu;
+package peticiones;
 
-import java.io.File;
-import java.io.Serializable;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
+import textos.Salidas;
 
 /**
  * Conjunto de metodos para para trabajar en clase de DAM.

@@ -11,7 +11,7 @@ import java.util.Scanner;
  *
  * @author a20armandocb
  */
-public class Test {
+public class Demo {
 
     /**
      * @param args the command line arguments
@@ -34,23 +34,12 @@ public class Test {
     private static Menu construirMenuPrincipal(Scanner lector) {
         Menu menu = new Menu(lector);
         menu.setTituloMenu("Menú de Ejemplo");
-        menu.setTexoSalir("Adios");
+        menu.setTextoSalir("Exit");
         
-        menu.addOpcion("Opcion 1",() -> { 
-                                            // metodos a ejecutar
-                                            System.out.println("Opcion 1");
-                                        });
+        menu.addOpcion("Opcion 1",() -> { System.out.println("Activada la Opcion 1"); });
+        menu.addOpcion("Opcion 2",() -> { System.out.println("Activada la Opcion 1"); });
+        menu.addOpcion("Opcion 3",() -> { System.out.println("Activada la Opcion 1"); });
         
-        menu.addOpcion("Opcion 2",() -> { 
-                                            // metodos a ejecutar
-                                            System.out.println("Opcion 2");
-                                        });
-        
-        menu.addOpcion("Opcion 3",() -> { 
-                                            // metodos a ejecutar
-                                            System.out.println("Opcion 3");
-                                        });
-
         return menu;
     }
 
