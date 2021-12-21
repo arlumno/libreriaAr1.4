@@ -53,7 +53,7 @@ public class Demo {
                 continuar = false;
                 System.out.println("Bye Bye!");
                 break;
-                //deprecated
+                //deprecated, ahora se asigna directamente la funcion al añadir el boton
 //            case 1:
 //                System.out.println(EntradasGui.pedirFecha("mensaje").toString());
 //                break;

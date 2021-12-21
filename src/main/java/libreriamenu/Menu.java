@@ -25,7 +25,6 @@ import javax.swing.JFrame;
  */
 public class Menu {
 
-
     private ArrayList<String> opcionesArray = new ArrayList<String>();
     private ArrayList<String> descripcionOpcionesArray = new ArrayList<String>();
     private ArrayList<Runnable> accionOpcionesArray = new ArrayList<Runnable>();
@@ -40,6 +39,9 @@ public class Menu {
     private boolean pausarEjecucion = false;
     private String textoBotonSalir = "EXIT";
 
+    public Menu() {
+    }
+
     /**
      * Menú de opciones. Limitado a 127 opciones. Se reserva el 0 para salir.
      *
@@ -48,6 +50,7 @@ public class Menu {
     public Menu(Scanner lector) {
         this.lector = lector;
     }
+
     /**
      * @return the salir
      */
@@ -69,6 +72,7 @@ public class Menu {
         this.salir = salir;
         borrarMenu();
     }
+
     /**
      * @param salir Indica si hay la opción de salir del menuString.
      */
@@ -109,8 +113,7 @@ public class Menu {
 //            borrarMenu();
 //        }
 //    }
-
-     public void addOpcion(String opcion, Runnable accion) {
+    public void addOpcion(String opcion, Runnable accion) {
         if (nOpciones == 127) {
             Salidas.errorLimite();
         } else {
@@ -120,6 +123,7 @@ public class Menu {
             borrarMenu();
         }
     }
+
     /**
      * Añade una opción al menú,
      *
@@ -136,31 +140,31 @@ public class Menu {
      */
     public void addOpciones(ArrayList<String> opciones, ArrayList<Runnable> acciones) {
         for (int i = 0; i < opciones.size(); i++) {
-            addOpcion(opciones.get(i),acciones.get(i));
+            addOpcion(opciones.get(i), acciones.get(i));
         }
     }
-    
-    
+
     /**
      * Carga un conjunto de opciones de tipo String[]
      *
      * @param opciones Arraylist String de opciones
      */
-    public void addOpciones(String[] opciones, Runnable[] acciones) {        
-        addOpciones(new ArrayList<>(Arrays.asList(opciones)),new ArrayList<>(Arrays.asList(acciones)));
+    public void addOpciones(String[] opciones, Runnable[] acciones) {
+        addOpciones(new ArrayList<>(Arrays.asList(opciones)), new ArrayList<>(Arrays.asList(acciones)));
     }
-   
+
     /**
-     * Carga un conjunto de opciones / descripcion  de tipo String[][]
-     * Donde el primer indice indica el conjunto de opciones, en el segundo indice [0] opcion y [1] descripción
-     * @param opciones 
+     * Carga un conjunto de opciones / descripcion de tipo String[][] Donde el
+     * primer indice indica el conjunto de opciones, en el segundo indice [0]
+     * opcion y [1] descripción
+     *
+     * @param opciones
      */
 //    public void addOpciones(String[][] opciones) {
 //        for(int i = 0; i < opciones.length; i++) {
 //            addOpcion(opciones[i][0],);
 //        }
 //    }
-
     private void delOpcion(byte nOpcion) {
         opcionesArray.remove(nOpcion);
         descripcionOpcionesArray.remove(nOpcion);
@@ -217,118 +221,127 @@ public class Menu {
     }
 
     /**
-     * Imprime el menuString, pide que selecciones una opción y guarda la seleccion.     
+     * Imprime el menuString, pide que selecciones una opción y guarda la
+     * seleccion.
      *
-     * @throws Exception. Ocurre cuando se intenta imprimir un menú vació, con respuesta obligatoria (que no tiene opción de salir)
+     * @throws Exception. Ocurre cuando se intenta imprimir un menú vació, con
+     * respuesta obligatoria (que no tiene opción de salir)
      */
     public void mostrarGUI() throws Exception {
         JFrame menuGUI = new JFrame();
-        JButton opcion = new JButton();      
+        JButton opcion = new JButton();
         int nBotones;
-        if(salir){
+        if (salir) {
             nBotones = nOpciones + 2;
-        }else{
-            nBotones = nOpciones ;            
+        } else {
+            nBotones = nOpciones;
         }
         int alturaBoton = 40;
         int anchoBoton = 400;
         int margenBoton = 15;
-        
-        Toolkit elToolkit = Toolkit.getDefaultToolkit();
-    //    Dimension screen = elToolkit.getScreenSize();        
 
-        menuGUI.setTitle(tituloMenu);       
+        Toolkit elToolkit = Toolkit.getDefaultToolkit();
+        //    Dimension screen = elToolkit.getScreenSize();        
+
+        menuGUI.setTitle(tituloMenu);
         menuGUI.setLayout(null);
         menuGUI.setResizable(false);
-        menuGUI.setSize(margenBoton + anchoBoton + margenBoton +15,20+ margenBoton + (nBotones * (alturaBoton + margenBoton)) + margenBoton);
+        menuGUI.setSize(margenBoton + anchoBoton + margenBoton + 15, 20 + margenBoton + (nBotones * (alturaBoton + margenBoton)) + margenBoton);
         menuGUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 //        menuGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         int y = margenBoton;
-        for (int i = 0; i < nOpciones; i++) {   
+        for (int i = 0; i < nOpciones; i++) {
             final int j = i;
             opcion = new JButton(opcionesArray.get(i));
             final Runnable accion = accionOpcionesArray.get(i);
             opcion.setSize(anchoBoton, alturaBoton);
             opcion.setLocation(margenBoton, y);
-            
-            opcion.addActionListener( new ActionListener(){
+
+            opcion.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e){
-                    seleccion = (byte) (j +1);
-                    if(accion != null){
+                public void actionPerformed(ActionEvent e) {
+                    seleccion = (byte) (j + 1);
+                    if (accion != null) {
                         accion.run();
                     }
                     menuGUI.dispose();
                     pausarEjecucion = false;
                 }
-            });            
+            });
             menuGUI.add(opcion);
             y += alturaBoton + margenBoton;
-        }   
-        if(salir){
+        }
+        if (salir) {
             opcion = new JButton(textoBotonSalir);
             opcion.setSize(anchoBoton, alturaBoton);
             opcion.setLocation(margenBoton, (y + alturaBoton));
             opcion.setBackground(Color.red);
-            
-            opcion.addActionListener( new ActionListener(){
+
+            opcion.addActionListener(new ActionListener() {
                 @Override
-                public void actionPerformed(ActionEvent e){
+                public void actionPerformed(ActionEvent e) {
                     seleccion = 0;
                     menuGUI.dispose();
                     pausarEjecucion = false;
                 }
-            });            
+            });
             menuGUI.add(opcion);
         }
-        
+
         menuGUI.setVisible(true);
         intentos++;
         pausarEjecucion = true;
-        while(pausarEjecucion){
-             //pausamos la ejecución del programa hasta que se asigne una respuesta.
-             Thread.sleep(500); //para reducir la carga del bucle se pase.         
+        while (pausarEjecucion) {
+            //pausamos la ejecución del programa hasta que se asigne una respuesta.
+            Thread.sleep(500); //para reducir la carga del bucle se pase.         
         }
-               
+
     }
+
     public void mostrar() throws Exception {
         //se imprime a partir del primer intento del menú.
-        if (validarMenu()) {
-            if (intentos > 0) {
-                //pausa
-                Salidas.repetirMenu();
-                //pedimos entrada de texto para que se pause el programa, no es necesario asignar el resultado
-                lector.nextLine();
-            }
-            //imprimimos el menú
-            System.out.println(menuString);
-            seleccion = Entradas.pedirByte(lector, (byte) 0, nOpciones);
+        if (lector != null) {
 
-            if (seleccion == 0) {
-                System.out.println(Textos.finMenu(tituloMenu));
+            if (validarMenu()) {
+                if (intentos > 0) {
+                    //pausa
+                    Salidas.repetirMenu();
+                    //pedimos entrada de texto para que se pause el programa, no es necesario asignar el resultado
+                    lector.nextLine();
+                }
+                //imprimimos el menú
+                System.out.println(menuString);
+                seleccion = Entradas.pedirByte(lector, (byte) 0, nOpciones);
+
+                if (seleccion == 0) {
+                    System.out.println(Textos.finMenu(tituloMenu));
+                } else {
+                    Utils.limpiarConsola(5);
+                    System.out.println(Textos.opcionSeleccionada(opcionesArray.get(seleccion - 1)));
+                }
+                intentos++;
             } else {
-                Utils.limpiarConsola(5);                
-                System.out.println(Textos.opcionSeleccionada(opcionesArray.get(seleccion - 1)));
+                if (isSalir()) {
+                    seleccion = 0;
+                } else {
+                    // esto ocurre cuando se intenta imprimir un menú vació, con respuesta obligatoria (que no tiene opción de salir)
+                    throw new Exception(Textos.EXC_SIN_OPCIONES);
+                }
             }
-            intentos++;
         } else {
-            if (isSalir()) {
-                seleccion = 0;
-            } else {
-                // esto ocurre cuando se intenta imprimir un menú vació, con respuesta obligatoria (que no tiene opción de salir)
-                throw new Exception(Textos.EXC_SIN_OPCIONES);
-            }
+            System.out.println("No se puede mostrar el ménu. No se ha asignado un flujo de entrada de datos");
         }
 
     }
 
     /**
      * Para obtener la opcion seleccionada en el thisl. mostrar()
+     *
      * @return tipo byte, tras mostrar el menú. indice array = (selección - 1)
      * @throws Exception, Cuando no se ha seleccionado anteriormente.
      */
-    public byte getSeleccion() throws Exception{
-        if (intentos == 0){
+    public byte getSeleccion() throws Exception {
+        if (intentos == 0) {
             throw new Exception(Textos.NO_SELECCIONADO);
         }
         return seleccion;
