@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 peticiones\SalidasGui.class
 textos\SalidasGui.class
 libreriamenu\Menu.class
@@ -5,8 +6,21 @@ libreriamenu\Demo.class
 libreriamenu\Menu$2.class
 libreriamenu\GUI.class
 peticiones\EntradasGui.class
+=======
+menu\GUI.class
+textos\SalidasGui.class
+menu\Menu$2.class
+menu\Menu.class
+peticiones\EntradasGui.class
+menu\Menu$1.class
+>>>>>>> refs/remotes/origin/master
 peticiones\Entradas.class
 textos\Salidas.class
 textos\Textos.class
 utilidades\Utils.class
+<<<<<<< HEAD
 libreriamenu\Menu$1.class
+=======
+utilidades\Log.class
+menu\Demo.class
+>>>>>>> refs/remotes/origin/master

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package libreriamenu;
+package menu;
 
 import java.util.Scanner;
+import utilidades.Log;
 
 /**
  *
@@ -35,7 +36,8 @@ public class Demo {
         Menu menu = new Menu(lector);
         menu.setTituloMenu("Menú de Ejemplo");
         menu.setTextoSalir("Exit");
-        
+        Log log = Log.getInstance();
+        log.addToLog("iniciado el programa");
         menu.addOpcion("Opcion 1",() -> { System.out.println("Activada la Opcion 1"); });
         menu.addOpcion("Opcion 2",() -> { System.out.println("Activada la Opcion 1"); });
         menu.addOpcion("Opcion 3",() -> { System.out.println("Activada la Opcion 1"); });

@@ -403,7 +403,7 @@ public class EntradasGui {
      *
      * @param archivos true para admitir archivos
      * @param directorios true para admitir directorios
-     * @return devuelve archivo tipo File
+     * @return devuelve archivo o directorio tipo File
      */
     public static File pedirArchivo(boolean archivos, boolean directorios) {
         String resultado = "";
@@ -433,7 +433,23 @@ public class EntradasGui {
         } while (!fin);
         return archivo;
     }
-
+    
+    /**
+     * Gui para seleccionar un archivo.
+     * @return devuelve archivo tipo File
+     */
+    public static File pedirArchivo() {
+        return pedirArchivo(true,false);
+    }
+    
+     /**
+     * Gui para seleccionar un directorio.
+     * @return devuelve un directorio tipo File
+     */
+    public static File pedirDirectorio() {
+        return pedirArchivo(false,true);
+    }
+    
     public static String pedirOpcion(String mensaje, ArrayList<String> listaOpciones) {
         Object resultado;
         resultado = JOptionPane.showInputDialog(null, mensaje,
