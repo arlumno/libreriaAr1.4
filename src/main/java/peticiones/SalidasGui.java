@@ -15,4 +15,7 @@ public class SalidasGui {
     public static void mensaje(String mensaje){
         JOptionPane.showMessageDialog(null,mensaje);
     }
+    public static void bloqueTexto(String mensaje){
+        JOptionPane.showMessageDialog(null,mensaje);
+    }
 }

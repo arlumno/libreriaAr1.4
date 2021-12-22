@@ -7,12 +7,15 @@ package utilidades;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.charset.Charset;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -30,9 +33,9 @@ public class Log {
     public void setDir(String ruta) throws Exception {
         File aux = new File(ruta);
         if (aux.isDirectory()) {
-            this.ruta = ruta;
+            this.ruta = ruta + "\\";
         } else {
-            throw new Exception("Ruta incorrecta");
+            throw new Exception("Ruta incorrecta: " + aux.getAbsolutePath());
         }
     }
 
@@ -59,6 +62,8 @@ public class Log {
             registro.append("\n");
 
             bw.write(registro.toString());
+        } catch (IOException e) {
+            System.out.println("Error al guardar en log en ruta: " + file.getAbsolutePath() + " -- " + e.toString());
         } catch (Exception e) {
             System.out.println("Error al guardar en log: " + e.toString());
         } finally {
@@ -77,5 +82,27 @@ public class Log {
             instance = new Log();
         }
         return instance;
+    }
+
+    public String getLog() {
+        File file = new File(ruta + logFile);
+        String text = "";
+        text = utilidades.Utils.leerArchivo(file);
+        if (text == null || text == "") {
+            text = "Log vacio";
+        }
+        return text.toString();
+    }
+
+    public void borrarLog() {
+        File file = new File(ruta + logFile);
+        PrintWriter writer;
+        try {
+            writer = new PrintWriter(file);
+            writer.print("");
+            writer.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

@@ -41,6 +41,8 @@ public class Demo {
         menu.addOpcion("Opcion 1",() -> { System.out.println("Activada la Opcion 1"); });
         menu.addOpcion("Opcion 2",() -> { System.out.println("Activada la Opcion 1"); });
         menu.addOpcion("Opcion 3",() -> { System.out.println("Activada la Opcion 1"); });
+        menu.addOpcion("Ver Log",() -> { peticiones.SalidasGui.bloqueTexto(utilidades.Log.getInstance().getLog());});
+        menu.addOpcion("Borrar Log",() -> { utilidades.Log.getInstance().borrarLog();});
         
         return menu;
     }

@@ -5,6 +5,11 @@
  */
 package utilidades;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
 import textos.Salidas;
 
 /**
@@ -66,29 +71,58 @@ public class Utils {
     public static double redondearDouble(double numero) {
         return redondearDouble(numero, (byte) 2);
     }
-    
+
     /**
-     * Elimina espacios y guiones, y convierte en mayúsculas. Luego valida si el dni introducido es correcto. 
+     * Elimina espacios y guiones, y convierte en mayúsculas. Luego valida si el
+     * dni introducido es correcto.
+     *
      * @param dni numero de dni a instroducir
-     * @return devuelve un String el Dni formateado si es correcto, o null si no es correcto.
+     * @return devuelve un String el Dni formateado si es correcto, o null si no
+     * es correcto.
      */
-    public static String validarYFormatearDni(String dni){
-        String resultado = null;        
-        
+    public static String validarYFormatearDni(String dni) {
+        String resultado = null;
+
         dni = dni.trim().replace("-", "").replace(" ", "").toUpperCase();
-        if(dni.length() == 9){
-            try{
-                int indiceLetra = Integer.parseInt(dni.substring(0, 8))%23;
+        if (dni.length() == 9) {
+            try {
+                int indiceLetra = Integer.parseInt(dni.substring(0, 8)) % 23;
                 String letrasDni = "TRWAGMYFPDXBNJZSQVHLCKE";
-                if(dni.charAt(8) == letrasDni.charAt(indiceLetra)){
+                if (dni.charAt(8) == letrasDni.charAt(indiceLetra)) {
                     resultado = dni;
                 }
                 //TODO falta indices
-            }catch(Exception e){
-                
+            } catch (Exception e) {
+
             }
         }
-        
+
         return resultado;
+    }
+
+    public static String leerArchivo(File file) {
+        StringBuilder text = new StringBuilder();
+        if (file.exists()) {
+            String line;
+            BufferedReader br = null;
+            try {
+                br = new BufferedReader(new FileReader(file, Charset.forName("UTF-8")));
+                while ((line = br.readLine()) != null) {
+                    text.append(line);
+                    text.append("\n");
+                }
+            } catch (IOException e) {
+                System.out.println("Error al abrir el archivo: " + file.getName() + " -- " + e.toString());
+            } catch (Exception e) {
+                System.out.println("Error al abrir en log: " + e.toString());
+            } finally {
+                try {
+                    br.close();
+                } catch (Exception e) {
+                    System.out.println("Error al cerrar el flujo en log: " + e.toString());
+                }
+            }
+        }
+        return text.toString();
     }
 }

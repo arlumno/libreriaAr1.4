@@ -1,23 +1,11 @@
-<<<<<<< HEAD
-Z:\ArGit\libreriaAr1.4\src\main\java\textos\Salidas.java
-Z:\ArGit\libreriaAr1.4\src\main\java\libreriamenu\Menu.java
-Z:\ArGit\libreriaAr1.4\src\main\java\textos\SalidasGui.java
-Z:\ArGit\libreriaAr1.4\src\main\java\libreriamenu\GUI.java
-Z:\ArGit\libreriaAr1.4\src\main\java\peticiones\EntradasGui.java
-Z:\ArGit\libreriaAr1.4\src\main\java\peticiones\SalidasGui.java
-Z:\ArGit\libreriaAr1.4\src\main\java\libreriamenu\Demo.java
-Z:\ArGit\libreriaAr1.4\src\main\java\textos\Textos.java
-Z:\ArGit\libreriaAr1.4\src\main\java\utilidades\Utils.java
-Z:\ArGit\libreriaAr1.4\src\main\java\peticiones\Entradas.java
-=======
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\textos\Salidas.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\peticiones\Entradas.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\textos\SalidasGui.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\textos\Textos.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\peticiones\EntradasGui.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\menu\Demo.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\menu\GUI.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\utilidades\Log.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\menu\Menu.java
-C:\Users\Ar\Documents\proyectos git\libreriaAr1.4\src\main\java\utilidades\Utils.java
->>>>>>> refs/remotes/origin/master
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\textos\Textos.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\menu\Menu.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\textos\SalidasGui.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\utilidades\Log.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\peticiones\EntradasGui.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\peticiones\Entradas.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\textos\Salidas.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\utilidades\Utils.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\menu\GUI.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\menu\Demo.java
+C:\Users\Arsito\Documents\proyectos git\libreriaAr1.4\src\main\java\peticiones\SalidasGui.java
