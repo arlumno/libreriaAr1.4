@@ -6,6 +6,7 @@
 package peticiones;
 
 import javax.swing.JOptionPane;
+import menu.bloqueTextoGUI;
 
 /**
  *
@@ -15,7 +16,10 @@ public class SalidasGui {
     public static void mensaje(String mensaje){
         JOptionPane.showMessageDialog(null,mensaje);
     }
-    public static void bloqueTexto(String mensaje){
-        JOptionPane.showMessageDialog(null,mensaje);
+    public static void bloqueTexto(String texto){
+        new bloqueTextoGUI(texto);
+    }
+    public static void bloqueTexto(String titulo, String texto){
+        new bloqueTextoGUI(titulo, texto);
     }
 }

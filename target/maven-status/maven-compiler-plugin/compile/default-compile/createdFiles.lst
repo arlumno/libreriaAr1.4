@@ -9,5 +9,6 @@ menu\Menu.class
 peticiones\EntradasGui.class
 textos\Salidas.class
 textos\Textos.class
+menu\bloqueTextoGUI.class
 utilidades\Log.class
 menu\Demo.class
