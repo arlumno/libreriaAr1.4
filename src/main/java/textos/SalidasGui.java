@@ -55,6 +55,10 @@ public class SalidasGui {
         peticiones.SalidasGui.mensaje("Vuelva a introducirlo.");
     }
     
+    public static void operacionCancelada() {
+        peticiones.SalidasGui.mensaje("Operación Cancelada.");
+    }
+    
     /**
      * Mensaje con instrucciones para volver al menú anterior.
      */

@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.regex.Pattern;
 import textos.Salidas;
 
 /**
@@ -125,4 +126,18 @@ public class Utils {
         }
         return text.toString();
     }
+    
+    /**
+     * Valida si un texto cumple el pattern indicado.
+     * @param texto
+     * @param pattern
+     * @return boolean 
+     */
+    public static boolean validarString(String texto,String pattern){
+         //        Pattern patron = Pattern.compile("***");
+        //        Matcher comparador = patron.matcher(texto);
+        //        return comparador.matches();
+        //version resumida:
+        return Pattern.compile(pattern).matcher(texto).matches();
+    }    
 }

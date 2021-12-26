@@ -40,7 +40,8 @@ public class Demo {
         log.addToLog("iniciado el programa");
         menu.addOpcion("Opcion 1",() -> { System.out.println("Activada la Opcion 1"); });
         menu.addOpcion("Opcion 2",() -> { System.out.println("Activada la Opcion 1"); });
-        menu.addOpcion("Opcion 3",() -> { System.out.println("Activada la Opcion 1"); });
+        menu.addOpcion("Pedir un texto Obligatorio",() -> { peticiones.SalidasGui.mensaje(peticiones.EntradasGui.pedirString("Texto obligatorio entre 1 y 3",3,1,true)); });
+        menu.addOpcion("Pedir un texto NO Obligatorio",() -> { peticiones.SalidasGui.mensaje(peticiones.EntradasGui.pedirString("Texto opcional entre 1 y 3",3,1,false)); });
         menu.addOpcion("Ver Log",() -> { peticiones.SalidasGui.bloqueTexto("Log", utilidades.Log.getInstance().getLog());});
         menu.addOpcion("Borrar Log",() -> { utilidades.Log.getInstance().borrarLog();});
         

@@ -16,3 +16,6 @@
 [24-12-2021 11:48:51] iniciado el programa
 [24-12-2021 11:50:27] iniciado el programa
 [24-12-2021 14:56:31] iniciado el programa
+[26-12-2021 14:43:38] iniciado el programa
+[26-12-2021 14:47:48] iniciado el programa
+[26-12-2021 14:52:25] iniciado el programa

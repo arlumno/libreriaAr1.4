@@ -256,13 +256,18 @@ public class EntradasGui {
      * valorMax).
      * @return tipo String
      */
-    public static String pedirString(String mensaje, Integer valorMax, int valorMin) {
+    public static String pedirString(String mensaje, Integer valorMax, int valorMin, boolean obligatorio) {
         String resultado = "";
         boolean fin = false;
         do {
             resultado = JOptionPane.showInputDialog(mensaje);
             if (resultado == null) {
-                SalidasGui.errorReintentarIntroducir();
+                if(obligatorio){
+                    SalidasGui.errorReintentarIntroducir();                    
+                }else{
+                    SalidasGui.operacionCancelada();                    
+                    fin = true;
+                }
             } else {
                 if (resultado.length() < valorMin || (valorMax != null && resultado.length() > valorMax)) {
                     if (valorMax == null) {
@@ -278,6 +283,10 @@ public class EntradasGui {
 
         } while (!fin);
         return resultado;
+    }
+
+    public static String pedirString(String mensaje, Integer valorMax, int valorMin) {
+        return pedirString(mensaje, valorMax, valorMin, true);
     }
 
     /**
@@ -433,23 +442,25 @@ public class EntradasGui {
         } while (!fin);
         return archivo;
     }
-    
+
     /**
      * Gui para seleccionar un archivo.
+     *
      * @return devuelve archivo tipo File
      */
     public static File pedirArchivo() {
-        return pedirArchivo(true,false);
+        return pedirArchivo(true, false);
     }
-    
-     /**
+
+    /**
      * Gui para seleccionar un directorio.
+     *
      * @return devuelve un directorio tipo File
      */
     public static File pedirDirectorio() {
-        return pedirArchivo(false,true);
+        return pedirArchivo(false, true);
     }
-    
+
     public static String pedirOpcion(String mensaje, ArrayList<String> listaOpciones) {
         Object resultado;
         resultado = JOptionPane.showInputDialog(null, mensaje,
@@ -490,7 +501,8 @@ public class EntradasGui {
         } while (!fin);
         return resultado;
     }
-    public static void pedirAnuncio(String texto){
+
+    public static void pedirAnuncio(String texto) {
         JOptionPane.showMessageDialog(null, texto);
     }
 }
