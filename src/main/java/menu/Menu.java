@@ -14,9 +14,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 /**
  * Imprime un menún según los parametros proporcionados
@@ -28,6 +31,7 @@ public class Menu {
     private ArrayList<String> opcionesArray = new ArrayList<String>();
     private ArrayList<String> descripcionOpcionesArray = new ArrayList<String>();
     private ArrayList<Runnable> accionOpcionesArray = new ArrayList<Runnable>();
+    private HashMap<Integer, String> labelArray = new HashMap<Integer, String>();
     private Scanner lector;
     private StringBuilder menuString = new StringBuilder();
     private String tituloMenu = "";
@@ -172,6 +176,10 @@ public class Menu {
         borrarMenu();
     }
 
+    public void addLabel(String texto) {
+        labelArray.put(opcionesArray.size(), texto);
+    }
+
     /**
      * Genera el menuString en función de los opciones.
      */
@@ -230,15 +238,18 @@ public class Menu {
     public void mostrarGUI() throws Exception {
         JFrame menuGUI = new JFrame();
         JButton opcion = new JButton();
-        int nBotones;
-        if (salir) {
-            nBotones = nOpciones + 2;
-        } else {
-            nBotones = nOpciones;
-        }
-        int alturaBoton = 40;
-        int anchoBoton = 400;
-        int margenBoton = 15;
+        JLabel label = new JLabel();
+
+        
+        int nBotones = nOpciones;
+        if (salir) {nBotones++;}
+        int nLabels = labelArray.size();;
+        
+
+        int alturaBoton = 30;
+        int alturaLabel = 14;
+        int anchoElemento = 350;
+        int margenElemento = 8;
 
         Toolkit elToolkit = Toolkit.getDefaultToolkit();
         //    Dimension screen = elToolkit.getScreenSize();        
@@ -246,17 +257,25 @@ public class Menu {
         menuGUI.setTitle(tituloMenu);
         menuGUI.setLayout(null);
         menuGUI.setResizable(false);
-        menuGUI.setSize(margenBoton + anchoBoton + margenBoton + 15, 20 + margenBoton + (nBotones * (alturaBoton + margenBoton)) + margenBoton);
+        menuGUI.setSize(margenElemento + anchoElemento + margenElemento + 15,
+                20 + ((nLabels+nBotones+2) * margenElemento) + (nBotones * alturaBoton) + (nLabels * alturaBoton));
         menuGUI.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 //        menuGUI.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        int y = margenBoton;
+        int y = margenElemento;
         for (int i = 0; i < nOpciones; i++) {
+            if (labelArray.containsKey(i)) {
+                label = new JLabel("----   " + labelArray.get(i) + "   ----", SwingConstants.CENTER);
+                label.setSize(anchoElemento, alturaBoton / 2);
+                label.setLocation(margenElemento, y);
+                menuGUI.add(label);
+                y += alturaLabel + margenElemento;
+            }
+
             final int j = i;
             opcion = new JButton(opcionesArray.get(i));
             final Runnable accion = accionOpcionesArray.get(i);
-            opcion.setSize(anchoBoton, alturaBoton);
-            opcion.setLocation(margenBoton, y);
-
+            opcion.setSize(anchoElemento, alturaBoton);
+            opcion.setLocation(margenElemento, y);
             opcion.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -269,12 +288,13 @@ public class Menu {
                 }
             });
             menuGUI.add(opcion);
-            y += alturaBoton + margenBoton;
+
+            y += alturaBoton + margenElemento;
         }
         if (salir) {
             opcion = new JButton(textoBotonSalir);
-            opcion.setSize(anchoBoton, alturaBoton);
-            opcion.setLocation(margenBoton, (y + alturaBoton));
+            opcion.setSize(anchoElemento, alturaBoton);
+            opcion.setLocation(margenElemento, (y + alturaBoton));
             opcion.setBackground(Color.red);
 
             opcion.addActionListener(new ActionListener() {
