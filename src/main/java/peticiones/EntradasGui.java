@@ -8,6 +8,8 @@ package peticiones;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.InputMismatchException;
@@ -501,7 +503,14 @@ public class EntradasGui {
         } while (!fin);
         return resultado;
     }
-
+    
+    public static Date pedirDate(String mensaje){
+        return pedirFecha(mensaje);
+    }
+    public static LocalDate pedirLocalDate(String mensaje){
+        return pedirFecha(mensaje).toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+    }
+    
     public static void pedirAnuncio(String texto) {
         JOptionPane.showMessageDialog(null, texto);
     }
