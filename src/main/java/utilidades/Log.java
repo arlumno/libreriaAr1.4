@@ -24,10 +24,13 @@ import java.util.logging.Logger;
 public class Log {
 
     private static Log instance;
-    String ruta = "src\\main\\java\\";
+    String ruta = "src\\main\\java\\"; //ruta para Mven
     String logFile = "log.txt";
 
     private Log() {
+        if (!(new File(ruta).isDirectory())) {
+            ruta = "src\\"; //ruta para Ant
+        } 
     }
 
     public void setDir(String ruta) throws Exception {
