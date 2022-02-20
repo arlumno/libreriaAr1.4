@@ -1,6 +1,6 @@
 menu\GUI.class
-menu\Menu$1.class
 peticiones\Entradas.class
+menu\Menu$1.class
 utilidades\Utils.class
 peticiones\SalidasGui.class
 textos\SalidasGui.class
@@ -9,6 +9,6 @@ menu\Menu.class
 peticiones\EntradasGui.class
 textos\Salidas.class
 textos\Textos.class
-menu\bloqueTextoGUI.class
 utilidades\Log.class
+menu\bloqueTextoGUI.class
 menu\Demo.class
