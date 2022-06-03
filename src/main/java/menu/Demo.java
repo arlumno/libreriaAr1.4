@@ -67,19 +67,6 @@ public class Demo {
 //            case 2:
 //                System.out.println("Ha seleccionado la opción 2");
 //                break;
-//            case 3:
-//                System.out.println("Ha seleccionado la opción 3");
-//                break;
-//            case 4:
-//                System.out.println("Ha seleccionado la opción 4");
-//                break;
-//            case 5:
-//                System.out.println("Ha seleccionado la opción 5");
-//                break;
-//            case 6:
-//                System.out.println("Ha seleccionado la opción 6");
-//                break;
-//            default:
 //                System.out.println("opcion incorrecta");
 //                break;
 
